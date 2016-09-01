@@ -59,7 +59,7 @@
         make.height.equalTo(greenView);
     }];
     
-    [self.view addSubview:_imageView];
+    [self.view addSubview:self.imageView];
     self.imageView.image = [UIImage imageWithName:@"1"];
     [self.imageView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.equalTo(self.view.mas_left).with.offset(20);

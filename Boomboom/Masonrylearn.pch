@@ -16,5 +16,5 @@
 #import <Masonry/Masonry.h>
 
 #import "UIImage+Image.h"
-
+#import "UIView+Additions.h"
 #endif /* Masonrylearn_pch */

@@ -30,6 +30,7 @@ typedef void (^blk_t)(id obj);
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    
     self.title = @"viewController";
     
     // masonry内部不会造成block循环引用,因为view1对象并没有强引用block对象。
@@ -151,11 +152,15 @@ typedef void (^blk_t)(id obj);
 //        [self NSLog];
 //    }]; // 不会造成循环引用， 并且会执行NSLog
     
-//    [self executeBlock:^(id obj) {
-//        // 没有提醒造成循环引用，并且不会造成循环引用。
-//        [self NSLog];
-//    }];
     
+    [self executeBlock:^(id obj) {
+        // 没有提醒造成循环引用，并且不会造成循环引用。
+//        [self NSLog];
+        [self performSelector:@selector(NSLog) withObject:nil afterDelay:5];
+        NSLog(@"%@",self);
+    }];
+    
+
 //    [self addBlock:^(id obj) {
 //        [self NSLog];  //这样会提醒造成循环引用;self 还是可以释放的
 //    }];

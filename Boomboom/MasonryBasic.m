@@ -66,10 +66,16 @@
         make.top.equalTo(self.view.mas_top).with.offset(20);
         make.width.height.equalTo(50);
     }];
+    
+    [self performSelector:@selector(remove:) withObject:self.view afterDelay:2];
 }
 
 - (void)dealloc {
     NSLog(@"MasonryBasic dealloc");
+}
+
+- (void)remove:(UIView *)view {
+    [view.subviews makeObjectsPerformSelector:@selector(removeFromSuperview)];
 }
 
 @end

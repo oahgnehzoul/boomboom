@@ -13,6 +13,7 @@
 #import <CoreFoundation/CoreFoundation.h>
 #import <pthread/pthread.h>
 #import "AFNetworking.h"
+#import "UIButton+add.h"
 typedef void (^blk_t)(id obj);
 //blk_t blk;
 @interface ViewController ()
@@ -23,15 +24,28 @@ typedef void (^blk_t)(id obj);
 @property (nonatomic, strong) UIView *blueView;
 @property (nonatomic, copy) blk_t blk;
 
+@property (nonatomic, copy) void (^BlockName)(id data);
+
+
 @end
 
 @implementation ViewController
+
+
+
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     
     
     self.title = @"viewController";
+    
+    int (^BlockName)(int a) = ^int (int a) {
+        NSLog(@"%d",a);
+        return a;
+    };
+    
+    
     
     // masonry内部不会造成block循环引用,因为view1对象并没有强引用block对象。
 //    UIView *view1 = [[UIView alloc] init];
@@ -153,14 +167,15 @@ typedef void (^blk_t)(id obj);
 //    }]; // 不会造成循环引用， 并且会执行NSLog
     
     
-    [self executeBlock:^(id obj) {
-        // 没有提醒造成循环引用，并且不会造成循环引用。
-//        [self NSLog];
-        [self performSelector:@selector(NSLog) withObject:nil afterDelay:5];
-        NSLog(@"%@",self);
-    }];
+//    [self executeBlock:^(id obj) {
+//        // 没有提醒造成循环引用，并且不会造成循环引用。
+////        [self NSLog];
+//        [self performSelector:@selector(NSLog) withObject:nil afterDelay:5];
+//        NSLog(@"%@",self);
+//    }];
     
 
+    [self test];
 //    [self addBlock:^(id obj) {
 //        [self NSLog];  //这样会提醒造成循环引用;self 还是可以释放的
 //    }];
@@ -175,7 +190,7 @@ typedef void (^blk_t)(id obj);
     
 //    [self setHandler:^(id obj) {
 //        [self NSLog];
-//        //会提醒造成了循环引用，pop时还是可以销毁的,像这些带有set、add这种的，编译器因为KVC，相当于默认吧block作为了self的属性，那为什么pop了之后可以销毁？？
+//        //会提醒造成了循环引用，pop时还是可以销毁的,像这些带有set、add这种的，编译器因为KVC，相当于默认吧block作为了self的属性，那为什么pop了之后可以销毁？？猜测实际上没有循环引用
 //    //http://stackoverflow.com/questions/15535899/blocks-retain-cycle-from-naming-convention
 //    }];
     
@@ -190,7 +205,71 @@ typedef void (^blk_t)(id obj);
 //    myblock();
 //    NSLog(@"myblock:%@",myblock);
 //    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(NSLog) name:@"dfasf" object:nil];
+    
+    NSDictionary *dic = @{
+                          @"name":@"张三",
+                          @"job":@"老师"
+                          };
+    for (NSString *key in dic) {
+        NSLog(@"%@",key);
+    }
+    
+    UIButton *button = [[UIButton alloc] initWithFrame:CGRectMake(100, 100, 80, 30)];
+    [self.view addSubview:button];
+    __weak UIButton *weak = button;
+    button.titleLabel.text = @"123";
+    button.backgroundColor = [UIColor redColor];
+    [button addActionHandler:^{
+        weak.backgroundColor = [UIColor colorWithRed:arc4random_uniform(256)/255.0 green:arc4random_uniform(256)/255.0 blue:arc4random_uniform(256)/255.0 alpha:1];
+    } forControlEvent:UIControlEventTouchUpInside];
+    
+    /* ab 之后再 c
+    NSOperationQueue *queue = [[NSOperationQueue alloc] init];
+    NSOperation *a = [NSBlockOperation blockOperationWithBlock:^{
+        NSLog(@"a");
+    }];
+    NSOperation *b = [NSBlockOperation blockOperationWithBlock:^{
+        NSLog(@"b");
+    }];
+    NSOperation *c = [NSBlockOperation blockOperationWithBlock:^{
+        NSLog(@"c");
+    }];
+    [c addDependency:a];
+    [c addDependency:b];
+    [queue addOperation:c];
+    [queue addOperation:b];
+    [queue addOperation:a];
+    
+    */
+    
+    
+    uint8_t x;
+    NSString *imagePath = [[NSBundle mainBundle] pathForResource:@"MDPullEmoji@2x" ofType:@"png"];
+    NSLog(@"imagePath:%@",imagePath);
+    NSData *data = [NSData dataWithContentsOfFile:imagePath];
+    [data getBytes:&x length:1];
+    // png --> 0x89
+    NSLog(@"%x",x);
+    
 }
+
+- (void)test {
+    UIApplication *application = [UIApplication sharedApplication];
+    UIBackgroundTaskIdentifier __block backgroundTaskIdentifier = UIBackgroundTaskInvalid;
+    __weak typeof (self) weakSelf = self;
+    backgroundTaskIdentifier = [application beginBackgroundTaskWithExpirationHandler:^{
+        __strong typeof (weakSelf) strongSelf = weakSelf;
+        [strongSelf NSLog];
+        
+
+        
+//        [self NSLog];
+        //AF 中用到，此处 需要 weakself 解决循环引用
+//        self-->application-？->block-->self，感觉application 的 beginBackgroundTask 方法的实现中中强引用了 block，
+        
+    }];
+}
+
 
 - (void)transmitBlock:(blk_t)block {
     NSLog(@"传参：%@",block);
@@ -217,6 +296,10 @@ typedef void (^blk_t)(id obj);
     block([NSString new]);
 }
 
+- (void)handleBlock:(void(^)(id data))block {
+    block([NSString new]);
+}
+
 - (void)NSLog {
     NSLog(@"NSLog");
 }
@@ -238,11 +321,12 @@ void addBlockToArray(NSMutableArray *array) {
 //    };
 }
 
+//MARK:-你好啊
 - (void)dealloc {
     NSLog(@"viewController dealloced");
 }
 
-
+#pragma mark - 变了吗
 - (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
     [self.blueView removeFromSuperview];
     [UIView animateWithDuration:1 animations:^{

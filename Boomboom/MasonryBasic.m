@@ -29,7 +29,10 @@
     self.edgesForExtendedLayout = UIRectEdgeNone;
     
     UIView *greenView = [UIView new];
-    greenView.backgroundColor = [UIColor greenColor];
+    greenView.layer.backgroundColor = [UIColor greenColor].CGColor;
+    greenView.layer.cornerRadius = 20;
+    
+    
     [self.view addSubview:greenView];
     
     UIView *blueView = [UIView new];
@@ -67,7 +70,7 @@
         make.width.height.equalTo(50);
     }];
     
-    [self performSelector:@selector(remove:) withObject:self.view afterDelay:2];
+//    [self performSelector:@selector(remove:) withObject:self.view afterDelay:2];
 }
 
 - (void)dealloc {

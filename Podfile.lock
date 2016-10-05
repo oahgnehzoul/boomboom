@@ -20,7 +20,10 @@ PODS:
   - AFNetworking/UIKit (2.6.3):
     - AFNetworking/NSURLConnection
     - AFNetworking/NSURLSession
+  - FBRetainCycleDetector (0.1.2)
   - Masonry (1.0.1)
+  - MLeaksFinder (0.2.0):
+    - FBRetainCycleDetector
   - ReactiveCocoa (2.5):
     - ReactiveCocoa/UI (= 2.5)
   - ReactiveCocoa/Core (2.5):
@@ -28,17 +31,23 @@ PODS:
   - ReactiveCocoa/no-arc (2.5)
   - ReactiveCocoa/UI (2.5):
     - ReactiveCocoa/Core
+  - Reveal-iOS-SDK (1.6.2)
 
 DEPENDENCIES:
   - AFNetworking (~> 2.6.3)
   - Masonry (~> 1.0.1)
+  - MLeaksFinder
   - ReactiveCocoa (~> 2.5)
+  - Reveal-iOS-SDK
 
 SPEC CHECKSUMS:
   AFNetworking: cb8d14a848e831097108418f5d49217339d4eb60
+  FBRetainCycleDetector: 45462f9ed1af0cd77224a4cc4e6dacaca47371b4
   Masonry: a1a931a0d08870ed8ae415a2ea5ea68ebcac77df
+  MLeaksFinder: 07ab450d72d3bf5ef4201b74047d74ceae66d605
   ReactiveCocoa: e2db045570aa97c695e7aa97c2bcab222ae51f4a
+  Reveal-iOS-SDK: e2250b3c155bcfac53ae223ddc1f76d08f206c33
 
-PODFILE CHECKSUM: 213d54964064e5b31e16a2e2bfb4b9b7b50f5489
+PODFILE CHECKSUM: 65096864f09608376563dfc3b0a53eaf0783e3a2
 
 COCOAPODS: 1.0.1

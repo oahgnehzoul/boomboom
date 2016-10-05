@@ -2,11 +2,9 @@
 # platform :ios, '9.0'
 
 target 'boomboom' do
-  # Uncomment this line if you're using Swift or would like to use dynamic frameworks
-  # use_frameworks!
-
-  # Pods for DoMansonry
+    pod 'MLeaksFinder', :configurations => ['Debug']
 	pod 'AFNetworking','~> 2.6.3'
 	pod 'Masonry', '~> 1.0.1'
     pod 'ReactiveCocoa', '~> 2.5'
+    pod 'Reveal-iOS-SDK', :configurations => ['Debug']
 end

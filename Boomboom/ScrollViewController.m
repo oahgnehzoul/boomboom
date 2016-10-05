@@ -146,6 +146,15 @@
 
 @implementation ScrollViewController
 
++ (void)load {
+//    [super load];
+    NSLog(@"load");
+}
+
++ (void)initialize {
+    NSLog(@"initialize");
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.

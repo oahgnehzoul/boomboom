@@ -26,6 +26,8 @@ typedef void(^Block)(void);
 
 @property (nonatomic, assign) NSInteger age;
 //@property (nonatomic, copy) returnType (^blockName)(params);
+
+- (void)dance;
 @end
 
 @interface Student (Study)

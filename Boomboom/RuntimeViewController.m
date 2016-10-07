@@ -8,29 +8,51 @@
 
 #import "RuntimeViewController.h"
 #import <objc/runtime.h>
+#import <objc/message.h>
 #import "Student.h"
-
+#import "Car.h"
 @interface RuntimeViewController ()
 
 @end
 
 @implementation RuntimeViewController
 
+void sayFunction(id obj, SEL _cmd, id some) {
+    NSLog(@"%@ say %@",object_getIvar(obj, class_getInstanceVariable([obj class], "name")),some);
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-//    [self logProperties:[Student class]];
-    [self logPropertyAttributes:[Student class]];
+    // 创建一个类，添加方法，添加获取修改实例变量
+    Class People = objc_allocateClassPair([NSObject class], "People", 0);
+    class_addIvar(People, "name", sizeof(NSString *), log2(sizeof(NSString *)), @encode(NSString *));
+    class_addMethod(People, sel_registerName("say:"), (IMP)sayFunction, "v@:@");
+    objc_registerClassPair(People);
     
-    _name = @"123";
-//    self.stu->name = @"11";
-    Student *stu1 = [Student new];
-    stu1.otherName = @"otherName";
-    [self logProperties:[stu1 class]];
-    NSLog(@"------------");
-    [self logMethods:[Student class]];
+    id people = [People new];
+    [people setValue:@"张三" forKey:@"name"];
+    
+    Ivar nameIvar = class_getInstanceVariable(People, "name");
+    object_setIvar(people, nameIvar, @"李四");
+    
+    ((void (*)(id,SEL,id))objc_msgSend)(people,sel_registerName("say:"),@"hello");
+    
+    people = nil;
+    objc_disposeClassPair(People);
+    
+    
+    Car *car = [Car new];
+    car.driveBlock = ^ {
+        NSLog(@"car drive");
+    };
+//    car.driveBlock();
+    [car drive];
+    [car park];
 }
 
+
+/*
 - (void)logMethods:(Class)class {
     unsigned int count = 0;
     Method *methods = class_copyMethodList(class, &count);
@@ -73,6 +95,7 @@
     }
     free(properties);
 }
+ */
 
 
 @end

@@ -12,6 +12,13 @@
 + (void)load {
     NSLog(@"load Student");
 }
+
+- (void)dance {
+    NSLog(@"student dance");
+}
+- (void)park {
+    NSLog(@"student park");
+}
 @end
 @implementation Student (Study)
 

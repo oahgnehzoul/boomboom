@@ -24,6 +24,7 @@
 		6030B5561D815DB00007B57F /* Student.m in Sources */ = {isa = PBXBuildFile; fileRef = 6030B5551D815DB00007B57F /* Student.m */; };
 		6038269F1D8C46FF0020B988 /* RuntimeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6038269E1D8C46FF0020B988 /* RuntimeViewController.m */; };
 		607C4B5B1D9CF07D0024E2E4 /* UIButton+add.m in Sources */ = {isa = PBXBuildFile; fileRef = 607C4B5A1D9CF07D0024E2E4 /* UIButton+add.m */; };
+		60C87EEA1DA7E6AE009C914E /* Car.m in Sources */ = {isa = PBXBuildFile; fileRef = 60C87EE91DA7E6AE009C914E /* Car.m */; };
 		60D3CBB11D9AAB4F00EA9B52 /* CollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 60D3CBB01D9AAB4F00EA9B52 /* CollectionViewController.m */; };
 		60D3CBB41D9AAB7500EA9B52 /* CollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 60D3CBB31D9AAB7500EA9B52 /* CollectionViewCell.m */; };
 		60D7569F1D8299650058E540 /* XibViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 60D7569D1D8299650058E540 /* XibViewController.m */; };
@@ -69,6 +70,8 @@
 		6038269E1D8C46FF0020B988 /* RuntimeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RuntimeViewController.m; path = Boomboom/RuntimeViewController.m; sourceTree = SOURCE_ROOT; };
 		607C4B591D9CF07D0024E2E4 /* UIButton+add.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIButton+add.h"; path = "Boomboom/UIButton+add.h"; sourceTree = SOURCE_ROOT; };
 		607C4B5A1D9CF07D0024E2E4 /* UIButton+add.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIButton+add.m"; path = "Boomboom/UIButton+add.m"; sourceTree = SOURCE_ROOT; };
+		60C87EE81DA7E6AE009C914E /* Car.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Car.h; path = Boomboom/Car.h; sourceTree = SOURCE_ROOT; };
+		60C87EE91DA7E6AE009C914E /* Car.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Car.m; path = Boomboom/Car.m; sourceTree = SOURCE_ROOT; };
 		60D3CBAF1D9AAB4F00EA9B52 /* CollectionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CollectionViewController.h; path = Boomboom/CollectionViewController.h; sourceTree = SOURCE_ROOT; };
 		60D3CBB01D9AAB4F00EA9B52 /* CollectionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CollectionViewController.m; path = Boomboom/CollectionViewController.m; sourceTree = SOURCE_ROOT; };
 		60D3CBB21D9AAB7500EA9B52 /* CollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CollectionViewCell.h; path = Boomboom/CollectionViewCell.h; sourceTree = SOURCE_ROOT; };
@@ -183,6 +186,8 @@
 				602C261F1D5040AF003AB471 /* ScrollViewController.m */,
 				6038269D1D8C46FF0020B988 /* RuntimeViewController.h */,
 				6038269E1D8C46FF0020B988 /* RuntimeViewController.m */,
+				60C87EE81DA7E6AE009C914E /* Car.h */,
+				60C87EE91DA7E6AE009C914E /* Car.m */,
 				607C4B591D9CF07D0024E2E4 /* UIButton+add.h */,
 				607C4B5A1D9CF07D0024E2E4 /* UIButton+add.m */,
 				60D7569C1D8299650058E540 /* XibViewController.h */,
@@ -358,6 +363,7 @@
 				6038269F1D8C46FF0020B988 /* RuntimeViewController.m in Sources */,
 				60D7B24A1D4B5962002C3757 /* MasonryBasic.m in Sources */,
 				607C4B5B1D9CF07D0024E2E4 /* UIButton+add.m in Sources */,
+				60C87EEA1DA7E6AE009C914E /* Car.m in Sources */,
 				602D525D1D94F623007740D1 /* RenderingViewController.m in Sources */,
 				60D7B2391D4AEBC6002C3757 /* ViewController.m in Sources */,
 				60217B151D531C14007A8B5A /* UIImage+Image.m in Sources */,

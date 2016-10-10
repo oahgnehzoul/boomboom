@@ -251,6 +251,64 @@ typedef void (^blk_t)(id obj);
     // png --> 0x89
     NSLog(@"%x",x);
     
+    [self findBiggestValue];
+}
+
+
+typedef struct treeNode {
+    int value;
+    struct treeNode *left;
+    struct treeNode *right;
+}TreeNode;
+
+void addValue(NSMutableArray *a,struct treeNode *t) {
+    if (t != NULL) {
+        [a addObject:@(t->value)];
+        addValue(a, t->left);
+        addValue(a, t->right);
+    }
+}
+
+void inOrder(TreeNode *t) {
+    if (t) {
+        printf("%d,",t->value);
+        inOrder(t->left);
+        inOrder(t->right);
+    }
+    return;
+}
+
+- (void)findBiggestValue {
+    TreeNode *node1 = (TreeNode *)malloc(sizeof(TreeNode));
+    TreeNode *node2 = (TreeNode *)malloc(sizeof(TreeNode));
+    TreeNode *node3 = (TreeNode *)malloc(sizeof(TreeNode));
+    TreeNode *node4 = (TreeNode *)malloc(sizeof(TreeNode));
+    TreeNode *node5 = (TreeNode *)malloc(sizeof(TreeNode));
+    TreeNode *node6 = (TreeNode *)malloc(sizeof(TreeNode));
+    TreeNode *node7 = (TreeNode *)malloc(sizeof(TreeNode));
+    TreeNode *node8 = (TreeNode *)malloc(sizeof(TreeNode));
+    node1->value = 1;
+    node1->left = node2;
+    node1->right = node8;
+    node2->value = 2;
+    node2->right = node4;
+    node4->value = 4;
+    node8->value = 8;
+    node8->left = node3;
+    node3->value = 3;
+    node8->right = node6;
+    node6->value = 6;
+    node6->left = node5;
+    node6->right = node7;
+    node5->value = 5;
+    node7->value = 7;
+    
+//    inOrder(node1);
+    NSMutableArray *arr = @[].mutableCopy;
+    addValue(arr, node1);
+    [arr enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+        NSLog(@"%@",obj);
+    }];
 }
 
 - (void)test {

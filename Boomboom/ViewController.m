@@ -37,13 +37,21 @@ typedef void (^blk_t)(id obj);
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    
-    self.title = @"viewController";
-    
-    int (^BlockName)(int a) = ^int (int a) {
-        NSLog(@"%d",a);
-        return a;
-    };
+    int count = 0;
+    for (int i = 1564; i <= 1616; i++) {
+        if ((i % 4 == 0) && (i % 100 != 0)) {
+            printf("%d\n",i);
+            count++;
+        }
+    }
+    printf("count:%d\n",count);
+    printf("a:%f\n",100*0.75*0.68*0.85*0.80);
+//    self.title = @"viewController";
+//    
+//    int (^BlockName)(int a) = ^int (int a) {
+//        NSLog(@"%d",a);
+//        return a;
+//    };
     
     
     
@@ -251,7 +259,7 @@ typedef void (^blk_t)(id obj);
     // png --> 0x89
     NSLog(@"%x",x);
     
-    [self findBiggestValue];
+//    [self findBiggestValue];
 }
 
 

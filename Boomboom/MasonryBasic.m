@@ -7,10 +7,11 @@
 //
 
 #import "MasonryBasic.h"
-
-@interface MasonryBasic ()
+#import <WebKit/WebKit.h>
+@interface MasonryBasic ()<WKUIDelegate,WKNavigationDelegate>
 
 @property (nonatomic, strong) UIImageView *imageView;
+@property (nonatomic, strong) WKWebView *webView;
 
 @end
 
@@ -23,11 +24,26 @@
     return _imageView;
 }
 
+
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     
     self.edgesForExtendedLayout = UIRectEdgeNone;
     
+    self.webView = [[WKWebView alloc] initWithFrame:self.view.bounds];
+
+    
+//    NSString *htmlPath = [[NSBundle mainBundle] pathForResource:@"123" ofType:@"html"];
+//    NSString *html = [[NSString alloc] initWithContentsOfFile:htmlPath encoding:NSUTF8StringEncoding error:nil];
+//    [self.webView loadHTMLString:html baseURL:nil];
+    [self.webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:@"http://www.shenghuozhe.net/support/location_intro.html"]]];
+    
+    self.webView.backgroundColor = [UIColor redColor];
+    [self.view addSubview:self.webView];
+    
+    
+    /*
     UIView *greenView = [UIView new];
     greenView.layer.backgroundColor = [UIColor greenColor].CGColor;
     greenView.layer.cornerRadius = 20;
@@ -69,7 +85,7 @@
         make.top.equalTo(self.view.mas_top).with.offset(20);
         make.width.height.equalTo(50);
     }];
-    
+    */
 //    [self performSelector:@selector(remove:) withObject:self.view afterDelay:2];
 }
 

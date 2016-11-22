@@ -34,11 +34,14 @@
         NSLog(@"%@",x);
     }];
     
+    @weakify(self)
     RACSignal *validUsernameSignal = [self.textField.rac_textSignal map:^id(NSString *text) {
+        @strongify(self)
         return @([self isValidUsername:text]);
     }];
 
     RACSignal *validPasswordSignal = [self.password.rac_textSignal map:^id(NSString *text) {
+        @strongify(self)
         return @([self isValidPassword:text]);
     }];
 //    [[validPasswordSignal map:^id(NSNumber *passwordValid) {
@@ -65,7 +68,7 @@
    
     
     [signUpActiveSignal subscribeNext:^(NSNumber *signupActive) {
-        
+        @strongify(self)        
         self.signInButton.enabled = [signupActive boolValue];
     }];
     
@@ -84,6 +87,11 @@
 
 
 - (IBAction)goSign:(id)sender {
-    }
+
+}
+
+- (void)dealloc {
+    NSLog(@"RACViewController dealloced");
+}
 
 @end

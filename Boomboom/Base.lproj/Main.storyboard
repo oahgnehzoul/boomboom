@@ -1,5 +1,5 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11201" systemVersion="15G1004" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="I0y-ay-5Zr">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11201" systemVersion="16B2555" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="I0y-ay-5Zr">
     <dependencies>
         <deployment version="1792" identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
@@ -89,9 +89,16 @@
                                     <segue destination="W0W-59-KiZ" kind="show" id="way-l7-B0y"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="A6T-ls-5xI">
+                                <state key="normal" title="Graphics Context"/>
+                                <connections>
+                                    <segue destination="S0e-TB-TMT" kind="show" id="Doc-cb-2SB"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
+                            <constraint firstItem="A6T-ls-5xI" firstAttribute="top" secondItem="9KV-nl-Z45" secondAttribute="bottom" id="03M-DJ-RLn"/>
                             <constraint firstItem="shi-8k-umK" firstAttribute="leading" secondItem="0VK-nJ-1rw" secondAttribute="leading" id="1JR-wg-u4T"/>
                             <constraint firstItem="0VK-nJ-1rw" firstAttribute="top" secondItem="4n6-Zb-RHs" secondAttribute="bottom" id="3LH-zi-MTL"/>
                             <constraint firstItem="STH-hZ-JBT" firstAttribute="top" secondItem="7Ft-my-Bbt" secondAttribute="bottom" id="5vn-d3-bQL"/>
@@ -104,6 +111,7 @@
                             <constraint firstItem="7mg-4Q-EaJ" firstAttribute="top" secondItem="BRJ-fj-3yk" secondAttribute="bottom" id="KdX-34-4Pe"/>
                             <constraint firstItem="STH-hZ-JBT" firstAttribute="leading" secondItem="RWQ-kr-u4X" secondAttribute="leading" id="NEg-9Q-Uje"/>
                             <constraint firstItem="9KV-nl-Z45" firstAttribute="leading" secondItem="shi-8k-umK" secondAttribute="leading" id="Plc-7v-yJq"/>
+                            <constraint firstItem="A6T-ls-5xI" firstAttribute="width" secondItem="9KV-nl-Z45" secondAttribute="width" id="QQS-n2-z6D"/>
                             <constraint firstItem="shi-8k-umK" firstAttribute="top" secondItem="0VK-nJ-1rw" secondAttribute="bottom" id="VTc-b7-4Bz"/>
                             <constraint firstItem="BRJ-fj-3yk" firstAttribute="leading" secondItem="4Te-X5-rSA" secondAttribute="leading" id="bVp-rM-ghq"/>
                             <constraint firstItem="0VK-nJ-1rw" firstAttribute="height" secondItem="4n6-Zb-RHs" secondAttribute="height" id="cjt-uo-V7v"/>
@@ -115,10 +123,12 @@
                             <constraint firstItem="0VK-nJ-1rw" firstAttribute="leading" secondItem="4n6-Zb-RHs" secondAttribute="leading" id="iqI-aP-qKw"/>
                             <constraint firstItem="4Te-X5-rSA" firstAttribute="top" secondItem="STH-hZ-JBT" secondAttribute="bottom" id="jDd-NI-56a"/>
                             <constraint firstItem="7mg-4Q-EaJ" firstAttribute="leading" secondItem="BRJ-fj-3yk" secondAttribute="leading" id="kW2-o0-SEL"/>
+                            <constraint firstItem="A6T-ls-5xI" firstAttribute="leading" secondItem="9KV-nl-Z45" secondAttribute="leading" id="kds-7j-MjA"/>
                             <constraint firstItem="shi-8k-umK" firstAttribute="width" secondItem="0VK-nJ-1rw" secondAttribute="width" id="mVG-33-Ujg"/>
                             <constraint firstAttribute="trailingMargin" secondItem="4Te-X5-rSA" secondAttribute="trailing" id="nO8-x4-iu7"/>
                             <constraint firstItem="BRJ-fj-3yk" firstAttribute="height" secondItem="4Te-X5-rSA" secondAttribute="height" id="nhd-11-2R2"/>
                             <constraint firstItem="9KV-nl-Z45" firstAttribute="width" secondItem="shi-8k-umK" secondAttribute="width" id="qNg-CN-pkn"/>
+                            <constraint firstItem="A6T-ls-5xI" firstAttribute="height" secondItem="9KV-nl-Z45" secondAttribute="height" id="rBx-Qq-hbk"/>
                             <constraint firstItem="4n6-Zb-RHs" firstAttribute="height" secondItem="7mg-4Q-EaJ" secondAttribute="height" id="udY-Ca-ovp"/>
                             <constraint firstItem="7mg-4Q-EaJ" firstAttribute="trailing" secondItem="BRJ-fj-3yk" secondAttribute="trailing" id="uut-5h-h8v"/>
                             <constraint firstItem="9KV-nl-Z45" firstAttribute="height" secondItem="shi-8k-umK" secondAttribute="height" id="zeC-GQ-rU3"/>
@@ -193,7 +203,7 @@
         <!--View Controller-->
         <scene sceneID="ekK-1e-ccS">
             <objects>
-                <viewController id="S0e-TB-TMT" sceneMemberID="viewController">
+                <viewController id="S0e-TB-TMT" customClass="CGViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="ILA-gs-so2"/>
                         <viewControllerLayoutGuide type="bottom" id="yOE-RP-pSs"/>
@@ -289,7 +299,7 @@
                                         <rect key="frame" x="0.0" y="92" width="375" height="136"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Xg2-bV-e0E" id="9us-rB-GsH">
-                                            <frame key="frameInset" width="375" height="135"/>
+                                            <frame key="frameInset" width="375" height="135.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </tableViewCellContentView>
                                     </tableViewCell>
@@ -301,7 +311,7 @@
                                         <rect key="frame" x="0.0" y="256" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="bcf-ab-A4H" id="4Jo-pA-zVE">
-                                            <frame key="frameInset" width="375" height="43"/>
+                                            <frame key="frameInset" width="375" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </tableViewCellContentView>
                                     </tableViewCell>
@@ -313,7 +323,7 @@
                                         <rect key="frame" x="0.0" y="328" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="zRW-lQ-faE" id="mUa-Lu-tNy">
-                                            <frame key="frameInset" width="375" height="43"/>
+                                            <frame key="frameInset" width="375" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </tableViewCellContentView>
                                     </tableViewCell>
@@ -325,7 +335,7 @@
                                         <rect key="frame" x="0.0" y="400" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="7ng-V6-sMT" id="OOC-uY-Urd">
-                                            <frame key="frameInset" width="375" height="43"/>
+                                            <frame key="frameInset" width="375" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </tableViewCellContentView>
                                     </tableViewCell>
@@ -337,7 +347,7 @@
                                         <rect key="frame" x="0.0" y="472" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Cw3-23-o4N" id="ceE-3j-GCn">
-                                            <frame key="frameInset" width="375" height="43"/>
+                                            <frame key="frameInset" width="375" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </tableViewCellContentView>
                                     </tableViewCell>
@@ -399,6 +409,24 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="N7t-FG-pQB" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1657" y="329"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="wab-j7-bCl">
+            <objects>
+                <viewController id="ld4-aq-nJv" customClass="CGViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="THa-cA-yn5"/>
+                        <viewControllerLayoutGuide type="bottom" id="D4f-xD-STs"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="dfW-BB-rOS">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="OUu-HA-pdg" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="719" y="471"/>
         </scene>
         <!--Priority做简单动画-->
         <scene sceneID="Wrv-ee-a0d">
